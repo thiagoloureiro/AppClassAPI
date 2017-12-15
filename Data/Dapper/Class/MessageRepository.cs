@@ -21,5 +21,18 @@ namespace Data.Dapper.Class
 
             return ret;
         }
+
+        public List<Messages> ListMessages(int id)
+        {
+            List<Messages> ret;
+            using (var db = GetMySqlConnection())
+            {
+                const string sql = @"select idmsg, nomemsg, datamsg, imagemsg, checkmsg, textmsg from appmensagens where id_usuario = @Id";
+
+                ret = db.Query<Messages>(sql, new { Id = id }, commandType: CommandType.Text).ToList();
+            }
+
+            return ret;
+        }
     }
 }

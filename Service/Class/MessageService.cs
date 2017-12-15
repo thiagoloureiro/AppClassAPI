@@ -18,5 +18,10 @@ namespace Service.Class
         {
             return _messageRepository.ListMessages();
         }
+
+        public List<Messages> ListMessages(int id)
+        {
+            return _messageRepository.ListMessages(id);
+        }
     }
 }
